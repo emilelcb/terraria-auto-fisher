@@ -3,7 +3,7 @@ Terraria AutoFisher is an application designed for non-invasive automation of th
 It uses computer vision to look at a certain region of your screen, and virtually presses a mouse key when
 motion is detected.
 
-![Terraria AutoFisher screenshot](banner_small.png)
+![Terraria AutoFisher screenshot](imgs/banner_small.png)
 
 ### Installation
 This program was tested to be working on Windows 7, Windows 10 and GNU/Linux with XOrg 11.
@@ -22,7 +22,7 @@ To install dependencies run `pip install -r requirements.txt`.
 ### Interface
 At the program startup, a retro-styled window appears. 
 
-![Screenshot of the program's user interface](ui.png)
+![Screenshot of the program's user interface](imgs/ui.png)
 
 1. This window shows the region the program looks it.
 2. This window shows white sparkles at places where movement is detected.
