@@ -10,7 +10,7 @@ def main():
     PyInstaller.__main__.run([
         path_to_main,
         "-n",
-        "oopsa"
+        "tAutoFisher"
         # other pyinstaller options... 
     ])
 
