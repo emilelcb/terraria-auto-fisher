@@ -10,14 +10,18 @@ This program was tested to be working on Windows 7, Windows 10 and GNU/Linux wit
 The pre-built Windows executable file should be published in GitHub releases. You can also run this program
 from source. You should have Python 3 installed. 
 
-Incomplete list of required libraries:
-- `opencv-python`
-- `pyautogui`
-- `PyQt5`
-- `configparser`
-- `Pillow`
+```bash
+git clone https://github.com/emilelcb/terraria-auto-fisher.git
+cd terraria-auto-fisher
 
-To install dependencies run `pip install -r requirements.txt`.
+# WARNING: if this fails try updating poetry
+# WARNING: (it compiles for me on poetry version 2.1.3)
+poetry update
+poetry run pyinstaller tAutoFisher/__main__.py -n tAutoFisher
+
+./dist/tAutoFisher/tAutoFisher
+```
+
 
 ### Interface
 At the program startup, a retro-styled window appears. 
