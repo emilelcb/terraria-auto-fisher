@@ -1,11 +1,16 @@
 # Terraria AutoFisher
-Terraria AutoFisher is an application designed for non-invasive automation of the fishing process in Terraria.
+tAutoFisher is an application designed for non-invasive automation of the fishing process in Terraria.
 It uses computer vision to look at a certain region of your screen, and virtually presses a mouse key when
 motion is detected.
 
 ![Terraria AutoFisher screenshot](imgs/banner_small.png)
 
 ### Installation
+>[!WARNING]
+> tAutoFisher depends on the `xdotool` binary being installed
+> **if you are running on Linux.** Install it via:
+> `sudo apt install xdotool`, `sudo pacman -S xdotool`, etc...
+
 This program was tested to be working on Windows 7, Windows 10 and GNU/Linux with XOrg 11.
 The pre-built Windows executable file should be published in GitHub releases. You can also run this program
 from source. You should have Python 3 installed. 
