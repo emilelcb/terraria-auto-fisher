@@ -48,12 +48,16 @@
               libGL
               libxkbcommon
               xorg.libX11
+              python311Full # for python-evdev
+              linux
+              krb5
+              brotli
             ];
           # here we are overriding python program to add LD_LIBRARY_PATH to it's env
           python-ld = prev.stdenv.mkDerivation {
             name = "python";
             buildInputs = [prev.makeWrapper];
-            src = prev.python311;
+            src = prev.python311Full.withPackages (ps: [ps.pyinstaller]);
             installPhase = ''
               mkdir -p $out/bin
               cp -r $src/* $out/
@@ -79,12 +83,54 @@
       system: pkgs: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            python-ld # here python will be taken from the overlay up here
+            python-ld
             poetry-ld
           ];
 
           shell = "${pkgs.bash}/bin/bash";
         };
+
+        fhs = let
+          base = pkgs.appimageTools.defaultFhsEnvArgs;
+
+          fhs =
+            pkgs.buildFHSEnv
+            (base
+              // {
+                name = "FHS";
+                targetPkgs = pkgs: (with pkgs; [
+                  # for python:
+                  acl
+                  attr
+                  bzip2
+                  curl
+                  libsodium
+                  libssh
+                  libxml2
+                  openssl
+                  stdenv.cc.cc
+                  systemd
+                  util-linux
+                  xz
+                  zlib
+                  zstd
+                  # for PyQT6/PySide6:
+                  dbus
+                  fontconfig
+                  freetype
+                  glib
+                  libGL
+                  libxkbcommon
+                  xorg.libX11
+
+                  python311Full
+                  linux
+                ]);
+                runScript = "bash";
+                extraOutputsToInstall = ["dev"];
+              });
+        in
+          fhs.env;
       }
     );
   };
